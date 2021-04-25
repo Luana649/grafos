@@ -31,7 +31,7 @@ namespace Editor_de_Grafos.Controllers
 
         public bool isArvore()
         {
-            throw new NotImplementedException();
+            return grafo.isArvore();
         }
 
         public bool isEuleriano()
@@ -66,7 +66,7 @@ namespace Editor_de_Grafos.Controllers
 
         int iGrafo.caminhoMinimo(int i, int j)
         {
-            throw new NotImplementedException();
+            return grafo.caminhoMinimo(i, j);
         }
     }
 }

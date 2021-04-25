@@ -19,12 +19,12 @@ namespace Editor_de_Grafos
         #region Botoes de Algoritmo do Menu
         private void BtParesOrd_Click(object sender, EventArgs e)
         {
-            g.paresOrdenados();
+            grafoPanel.grafo.paresOrdenados();
         }
 
         private void BtGrafoEuleriano_Click(object sender, EventArgs e)
         {
-            if(g.isEuleriano())
+            if(grafoPanel.grafo.isEuleriano())
                 MessageBox.Show("O grafo e Euleriano!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("O grafo não e Euleriano!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -32,7 +32,7 @@ namespace Editor_de_Grafos
 
         private void BtGrafoUnicursal_Click(object sender, EventArgs e)
         {
-            if (g.isUnicursal())
+            if (grafoPanel.grafo.isUnicursal())
                 MessageBox.Show("O grafo e Unicursal!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("O grafo não e Unicursal!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -85,7 +85,7 @@ namespace Editor_de_Grafos
 
         private void completarGrafoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            g.completarGrafo();
+            grafoPanel.grafo.completarGrafo();
         }
 
         private void limparToolStripMenuItem_Click(object sender, EventArgs e)

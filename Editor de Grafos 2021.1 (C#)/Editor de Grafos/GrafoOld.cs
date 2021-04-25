@@ -22,6 +22,11 @@ namespace Editor_de_Grafos
             throw new NotImplementedException();
         }
 
+        public bool isArvore()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool isEuleriano()
         {
             throw new NotImplementedException();

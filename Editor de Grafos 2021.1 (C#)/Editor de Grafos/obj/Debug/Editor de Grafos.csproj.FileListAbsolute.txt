@@ -85,3 +85,14 @@ D:\OtherProject\Editor de Grafos 2021.1 (C#)\Editor de Grafos\bin\Debug\Editor d
 D:\OtherProject\Editor de Grafos 2021.1 (C#)\Editor de Grafos\bin\Debug\Editor de Grafos.exe
 D:\OtherProject\Editor de Grafos 2021.1 (C#)\Editor de Grafos\bin\Debug\Editor de Grafos.pdb
 D:\OtherProject\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor_de_Grafos.View.resources
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor_de_Grafos.View.resources
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor_de_Grafos.Editor.resources
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor_de_Grafos.Properties.Resources.resources
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor de Grafos.csproj.GenerateResource.cache
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor de Grafos.csproj.CoreCompileInputs.cache
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\bin\Debug\Editor de Grafos.exe.config
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\bin\Debug\Editor de Grafos.exe
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\bin\Debug\Editor de Grafos.pdb
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor de Grafos.exe
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor de Grafos.pdb
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de Grafos\obj\Debug\Editor de Grafos.csprojAssemblyReference.cache

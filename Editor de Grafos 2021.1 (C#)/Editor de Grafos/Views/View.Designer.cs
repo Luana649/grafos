@@ -1,6 +1,7 @@
 ﻿using Editor_de_Grafos.Models;
 using System.Reflection;
 using System.Windows.Forms;
+using Editor_de_Grafos.Views;
 
 namespace Editor_de_Grafos
 {
@@ -52,7 +53,7 @@ namespace Editor_de_Grafos
             this.limparToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OPFile = new System.Windows.Forms.OpenFileDialog();
             this.SVFile = new System.Windows.Forms.SaveFileDialog();
-            this.g = new Editor_de_Grafos.GrafoController();
+            this.grafoPanel = new GrafoPanel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -220,12 +221,11 @@ namespace Editor_de_Grafos
             // 
             // g
             // 
-            this.g.AutoScroll = true;
-            this.g.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.g.Location = new System.Drawing.Point(0, 24);
-            this.g.Name = "g";
-            this.g.Size = new System.Drawing.Size(631, 401);
-            this.g.TabIndex = 1;
+            this.grafoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grafoPanel.Location = new System.Drawing.Point(0, 24);
+            this.grafoPanel.Name = "g";
+            this.grafoPanel.Size = new System.Drawing.Size(631, 401);
+            this.grafoPanel.TabIndex = 1;
             // 
             // Editor
             // 
@@ -233,7 +233,7 @@ namespace Editor_de_Grafos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(631, 425);
-            this.Controls.Add(this.g);
+            this.Controls.Add(this.grafoPanel);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -266,7 +266,7 @@ namespace Editor_de_Grafos
         private System.Windows.Forms.ToolStripMenuItem BtPeso;
         private System.Windows.Forms.ToolStripMenuItem BtPesoAleatorio;
         private System.Windows.Forms.ToolStripMenuItem BtSobre;
-        public GrafoController g;
+        public GrafoPanel grafoPanel;
         private System.Windows.Forms.OpenFileDialog OPFile;
         private SaveFileDialog SVFile;
         private ToolStripMenuItem completarGrafoToolStripMenuItem;

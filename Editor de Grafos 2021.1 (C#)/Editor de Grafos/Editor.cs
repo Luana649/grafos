@@ -19,12 +19,12 @@ namespace Editor_de_Grafos
         #region Botoes de Algoritmo do Menu
         private void BtParesOrd_Click(object sender, EventArgs e)
         {
-            g.paresOrdenados();
+            grafoPanel.grafo.paresOrdenados();
         }
 
         private void BtGrafoEuleriano_Click(object sender, EventArgs e)
         {
-            if(g.isEuleriano())
+            if(grafoPanel.grafo.isEuleriano())
                 MessageBox.Show("O grafo e Euleriano!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("O grafo não e Euleriano!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -32,7 +32,7 @@ namespace Editor_de_Grafos
 
         private void BtGrafoUnicursal_Click(object sender, EventArgs e)
         {
-            if (g.isUnicursal())
+            if (grafoPanel.grafo.isUnicursal())
                 MessageBox.Show("O grafo e Unicursal!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("O grafo não e Unicursal!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -46,62 +46,62 @@ namespace Editor_de_Grafos
 
         #region botoes restantes do menu
 
-        private void BtNovo_Click(object sender, EventArgs e)
-        {
-            g.Limpar();
-        }
+        //private void BtNovo_Click(object sender, EventArgs e)
+        //{
+        //    g.Limpar();
+        //}
 
-        private void BtAbrir_Click(object sender, EventArgs e)
-        {
-            if(OPFile.ShowDialog() == DialogResult.OK)
-            {
-                g.abrirArquivo(OPFile.FileName);
-                g.Refresh();
-            }
-        }
+        //private void BtAbrir_Click(object sender, EventArgs e)
+        //{
+        //    if(OPFile.ShowDialog() == DialogResult.OK)
+        //    {
+        //        g.abrirArquivo(OPFile.FileName);
+        //        g.Refresh();
+        //    }
+        //}
 
-        private void BtSalvar_Click(object sender, EventArgs e)
-        {
-            if(SVFile.ShowDialog() == DialogResult.OK)
-            {
-                g.SalvarArquivo(SVFile.FileName);
-            }
-        }
+        //private void BtSalvar_Click(object sender, EventArgs e)
+        //{
+        //    if(SVFile.ShowDialog() == DialogResult.OK)
+        //    {
+        //        g.SalvarArquivo(SVFile.FileName);
+        //    }
+        //}
 
-        private void BtSair_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        //private void BtSair_Click(object sender, EventArgs e)
+        //{
+        //    Application.Exit();
+        //}
 
-        private void BtPeso_Click(object sender, EventArgs e)
-        {
-            if(BtPeso.Checked)
-            {
-                BtPeso.Checked = false;
-                g.setExibirPesos(false);
+        //private void BtPeso_Click(object sender, EventArgs e)
+        //{
+        //    if(BtPeso.Checked)
+        //    {
+        //        BtPeso.Checked = false;
+        //        g.setExibirPesos(false);
 
-            }
-            else
-            {
-                BtPeso.Checked = true;
-                g.setExibirPesos(true);
-            }
-            g.Refresh();
-        }
+        //    }
+        //    else
+        //    {
+        //        BtPeso.Checked = true;
+        //        g.setExibirPesos(true);
+        //    }
+        //    g.Refresh();
+        //}
 
-        private void BtPesoAleatorio_Click(object sender, EventArgs e)
-        {
-            if(BtPesoAleatorio.Checked)
-            {
-                BtPesoAleatorio.Checked = false;
-                g.setPesosAleatorios(false);
-            }
-            else
-            {
-                BtPesoAleatorio.Checked = true;
-                g.setPesosAleatorios(true);
-            }
-        }
+        //private void BtPesoAleatorio_Click(object sender, EventArgs e)
+        //{
+        //    if(BtPesoAleatorio.Checked)
+        //    {
+        //        BtPesoAleatorio.Checked = false;
+        //        g.setPesosAleatorios(false);
+        //    }
+        //    else
+        //    {
+        //        BtPesoAleatorio.Checked = true;
+        //        g.setPesosAleatorios(true);
+        //    }
+        //}
 
         private void BtSobre_Click(object sender, EventArgs e)
         {
@@ -112,12 +112,12 @@ namespace Editor_de_Grafos
 
         private void completarGrafoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            g.completarGrafo();
+            grafoPanel.grafo.completarGrafo();
         }
 
         private void limparToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            g.Limpar();
+            //g.Limpar();
         }
     }
 }

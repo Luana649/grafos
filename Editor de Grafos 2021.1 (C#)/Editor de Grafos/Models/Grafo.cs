@@ -31,7 +31,8 @@ namespace Editor_de_Grafos.Models
         {
             foreach (var vertice in vertices)
             {
-                if (vertice.grauVertice() % 2 != 0)
+                var grau = vertice.grauVertice();
+                if (grau % 2 != 0)
                 {
                     return false;
                 }
@@ -55,7 +56,7 @@ namespace Editor_de_Grafos.Models
             var paresOrdenados = string.Empty;
             foreach (var aresta in arestas)
             {
-                paresOrdenados += $"{aresta}+ \n";
+                paresOrdenados += $"{aresta}\n";
             }
             return paresOrdenados;
         }
@@ -65,9 +66,9 @@ namespace Editor_de_Grafos.Models
             {
                 foreach (var verticeAdjacente in vertices)
                 {
-                    if (!vertice.isAdjcente(verticeAdjacente))
+                    if (!vertice.isAdjcente(verticeAdjacente) && vertice.id != verticeAdjacente.id)
                     {
-                        new Aresta(vertice, verticeAdjacente);
+                        new Aresta(vertice, verticeAdjacente, this);
                     }
                 }
             }
@@ -75,101 +76,137 @@ namespace Editor_de_Grafos.Models
         public void profundidade(int idVerticeInicial)
         {
             var vertice = vertices.Find(v => v.id == idVerticeInicial);
-            var profundidade = calcularProfundidade(0, vertice);
+            buscaProfundidade(vertice);
         }
-        public int calcularProfundidade(int profundidade, Vertice vertice)
+        public void buscaProfundidade(Vertice vertice)
         {
-            if (vertice.grauVertice() > 1)
+            if (vertice.temAdjacentesNaoVisitados())
             {
                 foreach (var verticeAjacente in vertice.adjacentes)
                 {
-                    calcularProfundidade(profundidade, verticeAjacente);
+                    verticeAjacente.visitado = true;
+                    buscaProfundidade(verticeAjacente);
                 }
             }
-            return profundidade++;
         }
         public void largura(int IdVerticeInicial)
         {
             Vertice.limparVertices(vertices);
             var vertice = vertices.Find(v => v.id == IdVerticeInicial);
-            calcularLargura(0, vertice);
-            var largura = vertices.FindAll(v => v.visitado).Count;
+            buscaLargura(0, vertice);
         }
-        public void calcularLargura(int largura, Vertice vertice)
+        public void buscaLargura(int largura, Vertice vertice)
         {
             vertice.visitaAjacentes();
             foreach (var verticeAjacente in vertice.adjacentes)
             {
                 if (!verticeAjacente.visitado)
                 {
-                    calcularLargura(largura, verticeAjacente);
+                    buscaLargura(largura, verticeAjacente);
                 }
             }
         }
         public void AGM(int IdVerticeInicial)
         {
-            Vertice.limparVertices(vertices);
-            var vertice = vertices.Find(v => v.id == IdVerticeInicial);
-            AGM(vertice);
+            var custo = AGM();
         }
-        public void AGM(Vertice vertice)
+        public int AGM()
         {
-            var proxVertice = vertice.arestaComMenorPeso(vertice);
-            foreach (var verticeAjacente in proxVertice.adjacentes)
+            int custo = 0;
+            foreach (var vertice in vertices)
             {
-                if (!verticeAjacente.visitado)
+                var aresta = vertice.arestaComMenorPeso();
+                if (aresta != null)
                 {
-                    AGM(verticeAjacente);
+                    custo += aresta.peso;
                 }
+
             }
+            return custo;
         }
         public void caminhoMinimo(int IdVerticeInicial, int IdVerticeFinal)
         {
             var verticeInicial = vertices.Find(vertice => vertice.id == IdVerticeInicial);
             var verticeFinal = vertices.Find(vertice => vertice.id == IdVerticeFinal);
-            foreach (var vertice in verticeInicial.adjacentes)
-            {
-                encontrarVertice(verticeInicial, verticeFinal);
-            }
+            caminhoMinimo(verticeInicial, verticeFinal);
         }
-        public bool encontrarVertice(Vertice verticeAtual, Vertice verticeProcurado)
+        public int caminhoMinimo(Vertice verticeInicial, Vertice verticeFinal)
         {
-            if (continuarProcurando(verticeAtual, verticeProcurado))
+            int[] custos = new int[vertices.Count];
+            Vertice.limparVertices(vertices, verticeInicial, custos);
+            int custo = 0;
+            var vertice = menorCusto();
+            while (podeContinuar(vertice, verticeFinal))
             {
-                foreach (var vertice in verticeAtual.adjacentes)
+                if (vertice.adjacentes != null)
                 {
-                    vertice.visitado = true;
-                    return encontrarVertice(vertice, verticeProcurado);
+                    foreach (var verticeAdjacete in vertice.adjacentes)
+                    {
+                        var custoCaminho = getCusto(vertice, verticeAdjacete) + custo;
+                        verticeAdjacete.setCustoEPredecessor(vertice, custoCaminho);
+                        if (custos[verticeAdjacete.id] > custoCaminho) {
+                            custos[verticeAdjacete.id] = custoCaminho;
+                        }
+                    }
+                }
+                vertice = menorCusto();
+                custo = vertice.custo;
+            }
+            return custos[verticeFinal.id];
+        }
+       
+        public int getCusto(Vertice vertice, Vertice verticeAdjacete)
+        {
+            int custo = 0;
+            foreach (var aresta in arestas)
+            {
+                if (aresta.vertices.Contains(vertice) && aresta.vertices.Contains(verticeAdjacete))
+                {
+                    custo = aresta.peso;
+                }
+            }
+            return custo;
+        }
+        private Vertice menorCusto()
+        {
+            var menorCusto = int.MaxValue;
+            Vertice verticeComMenorCusto = null;
+            foreach (var vertice in vertices)
+            {
+                if (vertice.custo < menorCusto && !vertice.visitado)
+                {
+                    verticeComMenorCusto = vertice;
+                    menorCusto = vertice.custo;
+                }
+            }
+            verticeComMenorCusto.visitado = true;
+            return verticeComMenorCusto;
+        }
+        private bool podeContinuar(Vertice verticeAtual, Vertice verticeFinal)
+        {
+            foreach (var vertice in vertices)
+            {
+                if (!vertice.visitado)
+                {
+                    return true;
                 }
             }
             return false;
         }
-        private bool continuarProcurando(Vertice verticeAtual, Vertice verticeProcurado)
-        {
-            bool continuarProcurando;
-            if (verticeAtual.Equals(verticeProcurado))
-            {
-                continuarProcurando = false;
-            }
-            else
-            {
-                continuarProcurando = verticeAtual.temAdjacentesNaoVisitados();
-            }
 
-            return continuarProcurando;
-        }
         public void numeroCromatico()
         {
-            List<Color> cores = new List<Color>();
+            var cores = new List<Color>();
             foreach (var vertice in vertices)
             {
+                var verticesAColorir = new List<Vertice>();
                 if (!coloriuTodos())
                 {
                     cores.Add(gerarCorAleatoria());
                     foreach (var cor in cores)
                     {
-                        vertice.cor = cor;
-                        colorirVertices(vertice.getNaoAdjacentes(vertices), cor);
+                        verticesAColorir = vertice.getNaoAdjacentes(vertices);
+                        colorirVertices(verticesAColorir, cor);
                     }
                 }
 
@@ -180,7 +217,7 @@ namespace Editor_de_Grafos.Models
         {
             foreach (var vertice in vertices)
             {
-                if (vertice.cor == null)
+                if (vertice.cor.IsEmpty)
                 {
                     return false;
                 }
@@ -191,7 +228,7 @@ namespace Editor_de_Grafos.Models
         {
             foreach (var vertice in vertices)
             {
-                if (vertice.cor == null)
+                if (vertice.cor.IsEmpty)
                 {
                     vertice.cor = cor;
                 }
@@ -202,6 +239,27 @@ namespace Editor_de_Grafos.Models
             var seletor = new Random();
             var argb = seletor.Next();
             return Color.FromArgb(argb);
+        }
+        public bool isArvore()
+        {
+            var vertice = vertices.Find(v => v.id == 0);
+            return isArvore(vertice, false);
+        }
+        public bool isArvore(Vertice vertice, bool temCiclo)
+        {
+            if (!vertice.visitado)
+            {
+                vertice.visitado = true;
+                foreach (var verticeAjacente in vertice.adjacentes)
+                {
+                    isArvore(verticeAjacente, temCiclo);
+                }
+            }
+            else
+            {
+                temCiclo = true;
+            }
+            return temCiclo;
         }
     }
 }

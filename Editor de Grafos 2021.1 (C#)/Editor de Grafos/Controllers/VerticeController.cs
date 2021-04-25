@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Editor_de_Grafos.Views
+namespace Editor_de_Grafos.Controllers
 {
     public class VerticeController : Control
     {

@@ -15,5 +15,6 @@ namespace Editor_de_Grafos
         void AGM(int v);
         void caminhoMinimo(int i, int j);
         void numeroCromatico();
+        bool isArvore();
     }
 }

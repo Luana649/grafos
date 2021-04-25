@@ -1,0 +1,17 @@
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\obj\Debug\Editor de GrafosTests.csproj.CoreCompileInputs.cache
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Editor de GrafosTests.dll
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Editor de GrafosTests.pdb
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Editor de Grafos.exe
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Editor de Grafos.pdb
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Editor de Grafos.exe.config
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\obj\Debug\Editor de GrafosTests.csprojAssemblyReference.cache
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\obj\Debug\Editor de GrafosTests.csproj.CopyComplete
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\obj\Debug\Editor de GrafosTests.dll
+D:\OtherProject\grafos\Editor de Grafos 2021.1 (C#)\Editor de GrafosTests\obj\Debug\Editor de GrafosTests.pdb

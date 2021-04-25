@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Windows.Forms;
+using Editor_de_Grafos.Views;
 
 namespace Editor_de_Grafos
 {
@@ -51,7 +52,7 @@ namespace Editor_de_Grafos
             this.limparToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OPFile = new System.Windows.Forms.OpenFileDialog();
             this.SVFile = new System.Windows.Forms.SaveFileDialog();
-            this.g = new Editor_de_Grafos.GrafoController();
+            this.grafoPanel = new GrafoPanel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,42 +83,10 @@ namespace Editor_de_Grafos
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.arquivoToolStripMenuItem.Text = "&Arquivo";
             // 
-            // BtNovo
-            // 
-            this.BtNovo.Name = "BtNovo";
-            this.BtNovo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.BtNovo.Size = new System.Drawing.Size(146, 22);
-            this.BtNovo.Text = "Novo";
-            this.BtNovo.Click += new System.EventHandler(this.BtNovo_Click);
-            // 
-            // BtAbrir
-            // 
-            this.BtAbrir.Name = "BtAbrir";
-            this.BtAbrir.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.BtAbrir.Size = new System.Drawing.Size(146, 22);
-            this.BtAbrir.Text = "Abrir";
-            this.BtAbrir.Click += new System.EventHandler(this.BtAbrir_Click);
-            // 
-            // BtSalvar
-            // 
-            this.BtSalvar.Name = "BtSalvar";
-            this.BtSalvar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.BtSalvar.Size = new System.Drawing.Size(146, 22);
-            this.BtSalvar.Text = "Salvar";
-            this.BtSalvar.Click += new System.EventHandler(this.BtSalvar_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
-            // 
-            // BtSair
-            // 
-            this.BtSair.Name = "BtSair";
-            this.BtSair.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.BtSair.Size = new System.Drawing.Size(146, 22);
-            this.BtSair.Text = "Sair";
-            this.BtSair.Click += new System.EventHandler(this.BtSair_Click);
             // 
             // algoritmosToolStripMenuItem
             // 
@@ -160,20 +129,7 @@ namespace Editor_de_Grafos
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Tag = "";
             this.ferramentasToolStripMenuItem.Text = "&Ferramentas";
-            // 
-            // BtPeso
-            // 
-            this.BtPeso.Name = "BtPeso";
-            this.BtPeso.Size = new System.Drawing.Size(191, 22);
-            this.BtPeso.Text = "Exibir Pesos";
-            this.BtPeso.Click += new System.EventHandler(this.BtPeso_Click);
-            // 
-            // BtPesoAleatorio
-            // 
-            this.BtPesoAleatorio.Name = "BtPesoAleatorio";
-            this.BtPesoAleatorio.Size = new System.Drawing.Size(191, 22);
-            this.BtPesoAleatorio.Text = "Gerar Pesos Aleatorios";
-            this.BtPesoAleatorio.Click += new System.EventHandler(this.BtPesoAleatorio_Click);
+           
             // 
             // completarGrafoToolStripMenuItem
             // 
@@ -219,12 +175,11 @@ namespace Editor_de_Grafos
             // 
             // g
             // 
-            this.g.AutoScroll = true;
-            this.g.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.g.Location = new System.Drawing.Point(0, 24);
-            this.g.Name = "g";
-            this.g.Size = new System.Drawing.Size(631, 401);
-            this.g.TabIndex = 1;
+            this.grafoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grafoPanel.Location = new System.Drawing.Point(0, 24);
+            this.grafoPanel.Name = "g";
+            this.grafoPanel.Size = new System.Drawing.Size(631, 401);
+            this.grafoPanel.TabIndex = 1;
             // 
             // Editor
             // 
@@ -232,7 +187,7 @@ namespace Editor_de_Grafos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(631, 425);
-            this.Controls.Add(this.g);
+            this.Controls.Add(this.grafoPanel);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -265,7 +220,7 @@ namespace Editor_de_Grafos
         private System.Windows.Forms.ToolStripMenuItem BtPeso;
         private System.Windows.Forms.ToolStripMenuItem BtPesoAleatorio;
         private System.Windows.Forms.ToolStripMenuItem BtSobre;
-        public GrafoController g;
+        public GrafoPanel grafoPanel;
         private System.Windows.Forms.OpenFileDialog OPFile;
         private SaveFileDialog SVFile;
         private ToolStripMenuItem completarGrafoToolStripMenuItem;

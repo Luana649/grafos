@@ -48,7 +48,7 @@
     <Compile Include="Controllers\GrafoController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GrafoPanel.cs">
+    <Compile Include="Views\GrafoPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\Aresta.cs" />

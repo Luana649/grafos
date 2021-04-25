@@ -6,7 +6,7 @@ namespace Editor_de_Grafos.Models
 {
     public class Aresta
     {
-        public int peso { get; set; }
+        public int custo { get; set; }
         public bool selecionada { get; set; }
         public List<Vertice> vertices { get; set; }
 
@@ -14,11 +14,11 @@ namespace Editor_de_Grafos.Models
         {
             vertices = new List<Vertice>();
         }
-        public Aresta(Vertice vertice, Vertice verticeAdjacente, Grafo grafo, int peso = 0)
+        public Aresta(Vertice vertice, Vertice verticeAdjacente, Grafo grafo, int custo = 0)
         {
             vertices = new List<Vertice> { vertice, verticeAdjacente};
             addAresta(this, vertice, verticeAdjacente);
-            this.peso = peso;
+            this.custo = custo;
             grafo.arestas.Add(this);
         }
 

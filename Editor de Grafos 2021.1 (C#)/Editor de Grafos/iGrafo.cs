@@ -13,7 +13,7 @@ namespace Editor_de_Grafos
         void profundidade(int v);
         void largura(int v);
         void AGM(int v);
-        void caminhoMinimo(int i, int j);
+        int caminhoMinimo(int i, int j);
         void numeroCromatico();
         bool isArvore();
     }

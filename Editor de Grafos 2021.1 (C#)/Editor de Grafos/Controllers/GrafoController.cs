@@ -63,5 +63,10 @@ namespace Editor_de_Grafos.Controllers
         {
             grafo.profundidade(v);
         }
+
+        int iGrafo.caminhoMinimo(int i, int j)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

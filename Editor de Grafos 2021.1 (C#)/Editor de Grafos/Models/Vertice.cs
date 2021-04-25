@@ -64,10 +64,10 @@ namespace Editor_de_Grafos.Models
             {
                 foreach (var aresta in arestas)
                 {
-                    if (aresta.peso < menor)
+                    if (aresta.custo < menor)
                     {
                         arestaSelecionado = aresta;
-                        menor = aresta.peso;
+                        menor = aresta.custo;
                     }
                 }
                 arestaSelecionado.selecionada = true;

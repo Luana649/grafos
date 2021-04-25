@@ -19,7 +19,6 @@ namespace Editor_de_Grafos.Models.Tests
         [TestMethod()]
         public void isEulerianoTest()
         {
-
             euleriano = GerarEuleriano();
             Assert.IsTrue(euleriano.isEuleriano());
         }
@@ -71,14 +70,13 @@ namespace Editor_de_Grafos.Models.Tests
         public void caminhoMinimoTest()
         {
             grafo = GerarGrafo();
-            grafo.caminhoMinimo(0, 5);
+            Assert.AreEqual(9, grafo.caminhoMinimo(0, 5));
         }
 
         [TestMethod()]
         public void isArvoreTest()
         {
             incompleto = GerarIncompleto();
-            incompleto.completarGrafo();
             Assert.IsFalse(incompleto.isArvore());
         }
 

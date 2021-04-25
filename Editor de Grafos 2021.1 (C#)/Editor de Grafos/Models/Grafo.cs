@@ -84,10 +84,14 @@ namespace Editor_de_Grafos.Models
             {
                 foreach (var verticeAjacente in vertice.adjacentes)
                 {
-                    verticeAjacente.visitado = true;
-                    buscaProfundidade(verticeAjacente);
+                    if (!verticeAjacente.visitado) {
+
+                        verticeAjacente.visitado = true;
+                        buscaProfundidade(verticeAjacente);
+                    }
                 }
             }
+
         }
         public void largura(int IdVerticeInicial)
         {
@@ -118,43 +122,43 @@ namespace Editor_de_Grafos.Models
                 var aresta = vertice.arestaComMenorPeso();
                 if (aresta != null)
                 {
-                    custo += aresta.peso;
+                    custo += aresta.custo;
                 }
 
             }
             return custo;
         }
-        public void caminhoMinimo(int IdVerticeInicial, int IdVerticeFinal)
+        public int caminhoMinimo(int IdVerticeInicial, int IdVerticeFinal)
         {
             var verticeInicial = vertices.Find(vertice => vertice.id == IdVerticeInicial);
             var verticeFinal = vertices.Find(vertice => vertice.id == IdVerticeFinal);
-            caminhoMinimo(verticeInicial, verticeFinal);
+            return caminhoMinimo(verticeInicial, verticeFinal);
         }
         public int caminhoMinimo(Vertice verticeInicial, Vertice verticeFinal)
         {
             int[] custos = new int[vertices.Count];
             Vertice.limparVertices(vertices, verticeInicial, custos);
             int custo = 0;
-            var vertice = menorCusto();
-            while (podeContinuar(vertice, verticeFinal))
+            while (podeContinuar())
             {
+                var vertice = menorCusto();
+                custo = vertice.custo;
                 if (vertice.adjacentes != null)
                 {
                     foreach (var verticeAdjacete in vertice.adjacentes)
                     {
                         var custoCaminho = getCusto(vertice, verticeAdjacete) + custo;
-                        verticeAdjacete.setCustoEPredecessor(vertice, custoCaminho);
-                        if (custos[verticeAdjacete.id] > custoCaminho) {
+                        if (custos[verticeAdjacete.id] > custoCaminho)
+                        {
+                            verticeAdjacete.setCustoEPredecessor(vertice, custoCaminho);
                             custos[verticeAdjacete.id] = custoCaminho;
                         }
                     }
                 }
-                vertice = menorCusto();
-                custo = vertice.custo;
             }
+            verticeInicial.predecessor = null;
             return custos[verticeFinal.id];
         }
-       
         public int getCusto(Vertice vertice, Vertice verticeAdjacete)
         {
             int custo = 0;
@@ -162,7 +166,7 @@ namespace Editor_de_Grafos.Models
             {
                 if (aresta.vertices.Contains(vertice) && aresta.vertices.Contains(verticeAdjacete))
                 {
-                    custo = aresta.peso;
+                    custo = aresta.custo;
                 }
             }
             return custo;
@@ -182,7 +186,7 @@ namespace Editor_de_Grafos.Models
             verticeComMenorCusto.visitado = true;
             return verticeComMenorCusto;
         }
-        private bool podeContinuar(Vertice verticeAtual, Vertice verticeFinal)
+        private bool podeContinuar()
         {
             foreach (var vertice in vertices)
             {
@@ -193,7 +197,6 @@ namespace Editor_de_Grafos.Models
             }
             return false;
         }
-
         public void numeroCromatico()
         {
             var cores = new List<Color>();
@@ -243,23 +246,23 @@ namespace Editor_de_Grafos.Models
         public bool isArvore()
         {
             var vertice = vertices.Find(v => v.id == 0);
-            return isArvore(vertice, false);
+            return isArvore(vertice, true);
         }
-        public bool isArvore(Vertice vertice, bool temCiclo)
+        public bool isArvore(Vertice vertice, bool eArvore)
         {
-            if (!vertice.visitado)
+            if (!vertice.visitado && vertice.adjacentes.Count > 0)
             {
                 vertice.visitado = true;
                 foreach (var verticeAjacente in vertice.adjacentes)
                 {
-                    isArvore(verticeAjacente, temCiclo);
+                    eArvore = isArvore(verticeAjacente, eArvore);
                 }
             }
             else
             {
-                temCiclo = true;
+                eArvore = false;
             }
-            return temCiclo;
+            return eArvore;
         }
     }
 }

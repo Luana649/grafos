@@ -61,5 +61,10 @@ namespace Editor_de_Grafos
         {
             throw new NotImplementedException();
         }
+
+        int iGrafo.caminhoMinimo(int i, int j)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
